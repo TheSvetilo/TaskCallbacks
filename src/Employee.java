@@ -20,4 +20,8 @@ public abstract class Employee {
     public Task.Status getTaskStatus() {
         return taskStatus;
     }
+
+    public boolean canHandleTask(Task task) {
+        return taskStatus == task.getTaskStatus();
+    }
 }

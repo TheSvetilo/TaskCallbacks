@@ -11,13 +11,14 @@ public class EmployeeChain {
         this.nextEmployee = employee;
     }
 
-    public void doTask(Task task) {
-        if (task.getTaskStatus() == currentEmployee.getTaskStatus()) {
+    public boolean doTask(Task task) {
+        boolean result = false;
+        if (currentEmployee.canHandleTask(task)) {
             currentEmployee.doTask(task);
+            result = true;
         } else if (nextEmployee != null) {
-            nextEmployee.doTask(task);
-        } else {
-            throw new IllegalArgumentException("Task can't be handled");
+            result = nextEmployee.doTask(task);
         }
+        return result;
     }
 }

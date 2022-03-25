@@ -20,7 +20,7 @@ public class Main {
         nextEmployee.setNextEmployee(lastEmployee);
 
         while (true) {
-            currentEmployee.doTask(factory.getTask());
+            if (!currentEmployee.doTask(factory.getTask())) break;
             factory.showTasks();
         }
     }
